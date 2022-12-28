@@ -1,10 +1,26 @@
 require 'spec_helper'
 
 describe "Bundler" do
+  it "can be configured with BUNDLE_DEPLOYMENT default value" do
+    Hatchet::Runner.new("default_ruby", config: {}).tap do |app|
+      app.deploy do
+        expect(app.output).to match("BUNDLE_DEPLOYMENT=1")
+      end
+    end
+  end
+
   it "can be configured with BUNDLE_DEPLOYMENT env var" do
     Hatchet::Runner.new("default_ruby", config: {"BUNDLE_DEPLOYMENT" => "0"}).tap do |app|
       app.deploy do
         expect(app.output).to match("BUNDLE_DEPLOYMENT=0")
+      end
+    end
+  end
+
+  it "can be configured to delete BUNDLE_DEPLOYMENT env var" do
+    Hatchet::Runner.new("default_ruby", config: {"BUNDLE_DEPLOYMENT" => ""}).tap do |app|
+      app.deploy do
+        expect(app.output).not_to match("BUNDLE_DEPLOYMENT=")
       end
     end
   end
