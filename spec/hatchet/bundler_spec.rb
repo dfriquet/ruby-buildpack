@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe "Bundler" do
+  it "can be configured with BUNDLE_DEPLOYMENT env var" do
+    Hatchet::Runner.new("default_ruby", config: {"BUNDLE_DEPLOYMENT" => "0"}).tap do |app|
+      app.deploy do
+        expect(app.output).to match("BUNDLE_DEPLOYMENT=0")
+      end
+    end
+  end
+
   it "can be configured with BUNDLE_WITHOUT env var with spaces in it" do
     Hatchet::Runner.new("default_ruby", config: {"BUNDLE_WITHOUT" => "foo bar baz"}).tap do |app|
       app.deploy do

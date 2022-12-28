@@ -315,7 +315,7 @@ EOF
     end
     ENV["BUNDLE_PATH"] = bundle_path
     ENV["BUNDLE_BIN"] = bundler_binstubs_path
-    ENV["BUNDLE_DEPLOYMENT"] = "1"
+    ENV["BUNDLE_DEPLOYMENT"] = env("BUNDLE_DEPLOYMENT") || "1"
     ENV["BUNDLE_GLOBAL_PATH_APPENDS_RUBY_SCOPE"] = "1" if bundler.needs_ruby_global_append_path?
   end
 
