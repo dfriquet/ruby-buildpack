@@ -88,6 +88,6 @@ class LanguagePack::Cache
   def exists?(path)
     return unless @cache_base
 
-    File.exists?(@cache_base + path)
+    File.exist?(@cache_base + path)
   end
 end

@@ -163,7 +163,7 @@ WARNING
   # runs the tasks for the Rails 3.1 asset pipeline
   def run_assets_precompile_rake_task
     log("assets_precompile") do
-      if File.exists?("public/assets/manifest.yml")
+      if File.exist?("public/assets/manifest.yml")
         puts "Detected manifest.yml, assuming assets were compiled locally"
         return true
       end
