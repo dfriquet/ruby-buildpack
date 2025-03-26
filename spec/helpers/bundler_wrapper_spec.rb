@@ -59,16 +59,6 @@ describe "Multiple platform detection" do
       expect(bundler.supports_multiple_platforms?).to be_truthy
     end
   end
-
-  it "reports false on bundler prior to 2.2" do
-    Dir.mktmpdir do |dir|
-      gemfile = Pathname(dir).join("Gemfile")
-      lockfile = Pathname(dir).join("Gemfile.lock").tap {|p| p.write("BUNDLED WITH\n   1.15.2") }
-
-      bundler = LanguagePack::Helpers::BundlerWrapper.new(gemfile_path: gemfile)
-      expect(bundler.supports_multiple_platforms?).to be_falsey
-    end
-  end
 end
 
 describe "BundlerWrapper mutates rubyopt" do

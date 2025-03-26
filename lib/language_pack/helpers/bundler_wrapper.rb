@@ -36,8 +36,8 @@ class LanguagePack::Helpers::BundlerWrapper
   include LanguagePack::ShellHelpers
 
   BLESSED_BUNDLER_VERSIONS = {}
-  BLESSED_BUNDLER_VERSIONS["1"] = "1.17.3"
   # Heroku-20's oldest Ruby verison is 2.5.x which doesn't work with bundler 2.4
+  BLESSED_BUNDLER_VERSIONS["1"] = "1.17.3"
   BLESSED_BUNDLER_VERSIONS["2.3"] = "2.3.25"
   BLESSED_BUNDLER_VERSIONS["2.4"] = "2.4.22"
   BLESSED_BUNDLER_VERSIONS["2.5"] = "2.5.23"
@@ -67,7 +67,8 @@ class LanguagePack::Helpers::BundlerWrapper
     if version_match
       major = version_match[:major]
       minor = version_match[:minor]
-      BLESSED_BUNDLER_VERSIONS["#{major}.#{minor}"]
+      version = BLESSED_BUNDLER_VERSIONS["#{major}.#{minor}"]
+      version
     else
       DEFAULT_VERSION
     end
