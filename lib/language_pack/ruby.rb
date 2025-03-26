@@ -129,7 +129,7 @@ class LanguagePack::Ruby < LanguagePack::Base
         $ git commit -m "Updated bundler version"
         ```
 
-        https://devcenter.heroku.com/changelog-items/3166
+        https://doc.scalingo.com/languages/ruby/start#bundler-version
       EOF
     end
   end
