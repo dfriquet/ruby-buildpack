@@ -20,7 +20,7 @@ class LanguagePack::BundlerCache
   def clear(stack = nil)
     stack ||= @stack
     @cache.clear(stack)
-    @bundler_dir.rmtree
+    @bundler_dir.rmtree if @bundler_dir.exist?
   end
 
   # converts to cache directory to support stacks. only copy contents if the stack hasn't changed
